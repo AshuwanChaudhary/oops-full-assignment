@@ -1,0 +1,74 @@
+CREATE DATABASE IF NOT EXISTS Quiz5RoundsDB;
+USE Quiz5RoundsDB;
+
+CREATE TABLE players (
+    player_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    level VARCHAR(20),
+    age INT
+);
+
+CREATE TABLE questions (
+    question_id INT PRIMARY KEY AUTO_INCREMENT,
+    round_number INT,
+    question_text TEXT,
+    option_a VARCHAR(200),
+    option_b VARCHAR(200),
+    option_c VARCHAR(200),
+    option_d VARCHAR(200),
+    correct_answer CHAR(1)
+);
+
+CREATE TABLE quiz_results (
+    result_id INT PRIMARY KEY AUTO_INCREMENT,
+    player_id INT,
+    round1_score INT,
+    round2_score INT,
+    round3_score INT,
+    round4_score INT,
+    round5_score INT,
+    overall_score DOUBLE,
+    quiz_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+);
+
+-- ROUND 1
+INSERT INTO questions (round_number, question_text, option_a, option_b, option_c, option_d, correct_answer) VALUES
+(1, 'What does OOP stand for?', 'Object Oriented Programming', 'Object Oriented Process', 'Object Oriented Protocol', 'Object Oriented Project', 'A'),
+(1, 'Which keyword inherits a class in Java?', 'implements', 'extends', 'inherits', 'uses', 'B'),
+(1, 'What is the size of int in Java?', '16 bit', '32 bit', '64 bit', 'Depends on OS', 'B'),
+(1, 'Which method is the entry point of Java?', 'start()', 'run()', 'main()', 'execute()', 'C'),
+(1, 'What does JDBC stand for?', 'Java Database Connectivity', 'Java Data Base Connection', 'Java Direct Byte Connection', 'Java Database Control', 'A');
+
+-- ROUND 2
+INSERT INTO questions (round_number, question_text, option_a, option_b, option_c, option_d, correct_answer) VALUES
+(2, 'Which class is used for GUI in Java?', 'Graphics', 'Swing', 'Paint', 'Window', 'B'),
+(2, 'What is the default value of int?', '0', '1', 'null', 'undefined', 'A'),
+(2, 'Which operator is used for concatenation?', '+', '-', '*', '/', 'A'),
+(2, 'What is the parent class of all classes?', 'Object', 'Class', 'Main', 'Super', 'A'),
+(2, 'Which package contains Scanner class?', 'java.io', 'java.util', 'java.lang', 'java.net', 'B');
+
+-- ROUND 3
+INSERT INTO questions (round_number, question_text, option_a, option_b, option_c, option_d, correct_answer) VALUES
+(3, 'What is the return type of main method?', 'int', 'void', 'String', 'boolean', 'B'),
+(3, 'Which loop executes at least once?', 'for', 'while', 'do-while', 'foreach', 'C'),
+(3, 'What is used to handle exceptions?', 'if-else', 'switch', 'try-catch', 'loop', 'C'),
+(3, 'Which keyword creates an object?', 'create', 'new', 'make', 'build', 'B'),
+(3, 'What does SQL stand for?', 'Structured Query Language', 'Simple Query Language', 'System Query Language', 'Standard Query Language', 'A');
+
+-- ROUND 4
+INSERT INTO questions (round_number, question_text, option_a, option_b, option_c, option_d, correct_answer) VALUES
+(4, 'Which statement is used to exit a loop?', 'break', 'exit', 'stop', 'return', 'A'),
+(4, 'What is the index of first array element?', '1', '0', '-1', 'null', 'B'),
+(4, 'Which method compares two strings?', 'compare()', 'equals()', '==', 'match()', 'B'),
+(4, 'What is the size of boolean?', '1 bit', '8 bit', '16 bit', '32 bit', 'A'),
+(4, 'Which collection allows duplicates?', 'Set', 'List', 'Map', 'HashSet', 'B');
+
+-- ROUND 5
+INSERT INTO questions (round_number, question_text, option_a, option_b, option_c, option_d, correct_answer) VALUES
+(5, 'What is polymorphism in Java?', 'Many forms', 'Single form', 'No form', 'Static form', 'A'),
+(5, 'Which keyword prevents method overriding?', 'final', 'static', 'private', 'protected', 'A'),
+(5, 'What is encapsulation?', 'Data hiding', 'Data showing', 'Data deleting', 'Data copying', 'A'),
+(5, 'Which interface is used for sorting?', 'Comparable', 'Comparator', 'Sortable', 'Ordered', 'A'),
+(5, 'What does JVM stand for?', 'Java Virtual Machine', 'Java Visual Machine', 'Java Variable Machine', 'Java Version Machine', 'A');
